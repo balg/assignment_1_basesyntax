@@ -3,8 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 
 import UserOutput from "./UserOutput/UserOutput";
+import UserInput from "./UserInput/UserInput";
 
 class App extends Component {
+  state = {
+    username: "balg"
+  }
+
+  userInputHandler = ( event ) => {
+    this.setState( { username: event.target.value } );
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,7 +21,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <UserOutput username="balg" />
+        <UserInput onChange={ this.userInputHandler } />
+        <UserOutput username={ this.state.username } />
         <UserOutput username="jozsika" />
         <UserOutput username="marika" />
       </div>
